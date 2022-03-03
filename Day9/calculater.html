@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            border: 1px solid black;
+            margin-left: 10px;
+            margin-right: 1100px;
+            padding: 10px;
+            background-color: aqua;
+        }
+        h1 {
+            color: blue;
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <form name="myform">
+        <table>
+            <tr>
+                <td><b> Enter 1st Number :</b></td>
+                <td><input type="text" name="fst"></td>
+            </tr>
+            <tr>
+                <td><b> Enter 2nd Number :</b></td>
+                <td><input type="text" name="snd"></td>
+            </tr>
+            <tr>
+                <td><input type="button" name="" value="+" onclick="add()">
+                    <input type="button" name="" value="-" onclick="sub()">
+                    <input type="button" name="" value="x" onclick="multiply()">
+                    <input type="button" name="" value="&#247" onclick="div()">
+                </td>
+            </tr>
+            <tr>
+                <td><b> This is Your Answer:</b></td>
+                <td><input type="text" name="result"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function add() {
+            fst = parseInt(myform.fst.value);
+            snd = parseInt(myform.snd.value);
+            result = fst + snd;
+            myform.result.value = result;
+        }
+        function sub() {
+            fst = parseInt(myform.fst.value);
+            snd = parseInt(myform.snd.value);
+            result = fst - snd;
+            myform.result.value = result;
+        }
+        function multiply() {
+            fst = parseInt(myform.fst.value);
+            snd = parseInt(myform.snd.value);
+            result = fst * snd;
+            myform.result.value = result;
+        }
+        function div() {
+            fst = parseInt(myform.fst.value);
+            snd = parseInt(myform.snd.value);
+            result = fst / snd;
+            myform.result.value = result;
+        }
+    </script>
+</body>
+
+</html>
