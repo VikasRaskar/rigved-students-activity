@@ -12,24 +12,24 @@
 
     <div>
 
-        <h1> OTP Generator </h1>
+        <h1> OTP Generation</h1>
 
         <script>
 
-            var n = prompt("Enter a number to get OTP");
+            var i = prompt("Enter a number to get OTP");
 
             function generateOTP() {
 
-                if (n == 4) {
-                    var otp = get4digit();
+                if (i == 4) {
+                    var otp = get4();
                     return otp;
                 }
-                if (n == 6) {
-                    var otp = get6digit();
+                if (i == 6) {
+                    var otp = get6();
                     return otp;
                 }
 
-                if (n != 4 && n != 6) {
+                if (i != 4 && i != 6) {
                     alert("Please enter the number 4 or 6 only.");
                     return false;
                 }
@@ -37,28 +37,28 @@
                 return Otp;
             }
 
-            document.write("OTP of " + n + " digits : " + generateOTP());
+            document.write("OTP of " + i + " digits : " + generateOTP());
 
-            function get4digit() {
+            function get4() {
                 var code = Math.round(Math.random() * 1000000);
                 var codeStr = code + "";
 
                 if (codeStr.length == 4) {
                     return codeStr;
                 } else {
-                    return get4digit();
+                    return get4();
                 }
 
             }
 
-            function get6digit() {
+            function get6() {
                 var code = Math.round(Math.random() * 1000000);
                 var codeStr = code + "";
 
                 if (codeStr.length == 6) {
                     return codeStr;
                 } else {
-                    return get6digit();
+                    return get6();
                 }
 
             }
