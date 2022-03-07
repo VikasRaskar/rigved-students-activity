@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Activity</title>
+    
+</head>
+<body bgcolor="aqua">
+<center><h1>CHESSBOARD</h1></center>
+<center><canvas id="chessBoard" width="504" height="504" style="border:5px solid #000000; background-color: white;" ></canvas></center>
+
+    <script type="text/javascript">
+var squareSiz;
+const numOfRows = 8;
+const NUMBER_OF_COLS = 8;
+var NUMBER_OF_SQUARES;
+
+var xValue = 0;
+var yValue = 0;
+
+var canvas, ctx
+
+window.onload
+    canvas = document.getElementById("chessBoard");
+    ctx = canvas.getContext("2d");
+    squareSizw = canvas.height / numOfRows;
+    NUMBER_OF_SQUARES = numOfRows * NUMBER_OF_COLS;
+
+    console.log("Size of each square = " + squareSizw +"px");
+
+    drawBoard(canvas, numOfRows, NUMBER_OF_COLS);
+
+
+function drawBoard(can, nRow, nCol) {
+    var ctx = can.getContext("2d");
+    var w = can.width;
+    var h = can.height;
+
+    nRow = nRow || 12;    
+    nCol = nCol || 12;    
+
+    w /= nCol;          
+    h /= nRow;           
+
+    for (var i = 0; i < nRow; ++i) {
+        for (var j = 0, col = nCol / 2; j < col; ++j) {
+            ctx.rect(2 * j * w + (i % 2 ? 0 : w), i * h, w, h);
+        }
+    }
+
+    ctx.fill();
+}
+
+    </script>
+
+</body>
+</html>
