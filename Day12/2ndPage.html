@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2nd Page</title>
+</head>
+
+<body>
+    <h2>Storage Data</h2>
+
+    <div id='i1'></div>
+    <div id='i2'></div><br>
+    <a href="3rdPage.html">Edit Age</a>
+
+    <script type="text/javascript">
+        var data = localStorage.getItem('user');
+        var data2 = localStorage.getItem('age');
+        document.getElementById('i1').innerHTML = "Name :" + data
+        document.getElementById('i2').innerHTML = "Age : " + data2
+
+    </script>
+</body>
+
+</html>

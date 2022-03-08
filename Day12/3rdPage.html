@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3rd Page</title>
+</head>
+
+<body>
+    <Form>
+        Edit Age: <input type="text" name="age" id="i2">
+        <button onclick="editAge()">Edit</button><br><br>
+        <a href="2ndPage.html">Check The Details</a>
+    </Form>
+    <script type="text/javascript">
+        function editAge() {
+            var age = parseInt(document.getElementById('i2').value);
+            localStorage.setItem('age', age);
+
+        }
+    </script>
+</body>
+
+</html>
