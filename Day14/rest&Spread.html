@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest and Spread</title>
+</head>
+<body >
+    <script type="text/javascript">
+        function calci(a, ...b) {
+            let x = parseInt(Math.max(a, ...b));
+            let y = parseInt(Math.min(a, ...b));
+            var z = 0;
+                for(var i in arguments){
+                    z += arguments[i];
+                }
+                document.write("The Sum of all numbers is :"+z+"<br>");
+                document.write("The maximum number is "+x+" <br>" );
+                document.write("The minimum number is "+y+" <br>" );
+            
+            }
+        calci(10,20,30,5,15);
+
+            let x = Math.max(c);
+            let y = Math.min(c);
+        
+    </script>
+</body>
+</html>
