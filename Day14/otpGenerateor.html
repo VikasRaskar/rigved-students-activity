@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        Dear Customer , your OTP for registration is <span id="otp"></span>
+    </div><br>
+    <button type="button" onclick="generate()">Generate OTP</button>
+
+
+    <script>
+
+
+        function generate() {
+
+            var Otp = document.getElementById("otp").innerHTML =
+                Math.floor(Math.random() * 100000);
+            if (Otp > 99999) {
+                document.write(Otp);
+            } else {
+                document.write(Otp.padStart(6, 0));
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>
+

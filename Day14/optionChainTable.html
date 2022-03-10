@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table{
+            
+            background:blueviolet;
+            margin-top: 10px;
+            margin-left: 630px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+            padding: 15px;
+            text-align: center;
+            
+        }
+        th{
+            background-color: aqua;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+        }
+        tr{
+            background-color: aliceblue;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Option Chain Table</h1></center>
+    <script type = text/javascript>
+    let users = [
+    {name: "Alex", age: 25, address:{city: "MUM", state: "MH" }},
+    {name: "Bruce", age: 45,},
+    {name: "Charles", age: 43, address:{city: "BLR", state: "KA" }},
+    {name: "David", age: 36,},
+    {name: "Edward", age: 41, address:{city: "CHN", state: "TN" }},
+    ];
+    document.write(`<table BORDER="1PX">`)
+    document.write(`<tr><th>Name</th> <th>Age</th> <th>City</th> <th>State</th></tr>`)
+    for( i=0; i<users.length; i++)
+    document.write(`<tr><td> ${users[i].name}</td><td> ${users[i].age}</td><td> ${users[i]?.address?.city}</td><td>  ${users[i]?.address?.state}</td></tr>`)
+    document.write(`</table>`)
+    
+    </script>
+    
+</body>
+</html>
