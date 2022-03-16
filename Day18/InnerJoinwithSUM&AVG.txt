@@ -1,0 +1,105 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use rigved_db
+Database changed
+mysql> show tables;
+Empty set (0.04 sec)
+
+mysql> create table Student(Roll_No int PRIMARY KEY, Student_Name varchar(50) NOT NULL, Age int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc Student;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Roll_No      | int         | NO   | PRI | NULL    |       |
+| Student_Name | varchar(50) | NO   |     | NULL    |       |
+| Age          | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table Marks(MiD int NOT NULL, Physics int NOT NULL, Maths int NOT NULL, Chemistry int NOT NULL, Student_Roll_No int, FOREIGN KEY (Student_Roll_No) REFERENCES Student(Roll_No));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc Marks;
++-----------------+------+------+-----+---------+-------+
+| Field           | Type | Null | Key | Default | Extra |
++-----------------+------+------+-----+---------+-------+
+| MiD             | int  | NO   |     | NULL    |       |
+| Physics         | int  | NO   |     | NULL    |       |
+| Maths           | int  | NO   |     | NULL    |       |
+| Chemistry       | int  | NO   |     | NULL    |       |
+| Student_Roll_No | int  | YES  | MUL | NULL    |       |
++-----------------+------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into Student(Roll_No, Student_Name, Age) values(1, 'Raj', 20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student(Roll_No, Student_Name, Age) values(2, 'Ramesh', 20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Student(Roll_No, Student_Name, Age) values(3, 'Ravi', 21);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student(Roll_No, Student_Name, Age) values(4, 'Suraj', 22);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Student;
++---------+--------------+------+
+| Roll_No | Student_Name | Age  |
++---------+--------------+------+
+|       1 | Raj          |   20 |
+|       2 | Ramesh       |   20 |
+|       3 | Ravi         |   21 |
+|       4 | Suraj        |   22 |
++---------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into Marks(MiD, Physics, Maths, Chemistry, Student_Roll_No) values(11, 70, 80, 70, 2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Marks(MiD, Physics, Maths, Chemistry, Student_Roll_No) values(22, 80, 80, 80, 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Marks(MiD, Physics, Maths, Chemistry, Student_Roll_No) values(33, 90, 90, 70, 3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Marks(MiD, Physics, Maths, Chemistry, Student_Roll_No) values(44, 88, 88, 77, 4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Marks;
++-----+---------+-------+-----------+-----------------+
+| MiD | Physics | Maths | Chemistry | Student_Roll_No |
++-----+---------+-------+-----------+-----------------+
+|  11 |      70 |    80 |        70 |               2 |
+|  22 |      80 |    80 |        80 |               1 |
+|  33 |      90 |    90 |        70 |               3 |
+|  44 |      88 |    88 |        77 |               4 |
++-----+---------+-------+-----------+-----------------+
+4 rows in set (0.00 sec)
+
+
+mysql> select Student.Roll_No, Student.Student_Name, Marks.Physics, Marks.Maths, Marks.Chemistry,(Physics + Maths + Chemistry) AS Total, ((Physics + Maths + Chemistry) /3) AS AVG from Student INNER JOIN Marks ON Student.Roll_No = Marks.Student_Roll_No;
++---------+--------------+---------+-------+-----------+-------+---------+
+| Roll_No | Student_Name | Physics | Maths | Chemistry | Total | AVG     |
++---------+--------------+---------+-------+-----------+-------+---------+
+|       1 | Raj          |      80 |    80 |        80 |   240 | 80.0000 |
+|       2 | Ramesh       |      70 |    80 |        70 |   220 | 73.3333 |
+|       3 | Ravi         |      90 |    90 |        70 |   250 | 83.3333 |
+|       4 | Suraj        |      88 |    88 |        77 |   253 | 84.3333 |
++---------+--------------+---------+-------+-----------+-------+---------+
+4 rows in set (0.00 sec)
+
+mysql>

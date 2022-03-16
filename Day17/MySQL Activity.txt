@@ -30,32 +30,32 @@ mysql> desc Employee;
 +---------------+-------------+------+-----+---------+-------+
 4 rows in set (0.01 sec)
 
-mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'VIKAS', 65, 'vikas@gmail.com');
+mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'NIKHIL', 65, 'nikhil@gmail.com');
 ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
-mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'VIKAS', 15, 'vikas@gmail.com');
+mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'NIKHIL', 15, 'nikhil@gmail.com');
 ERROR 3819 (HY000): Check constraint 'employee_chk_1' is violated.
-mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'VIKAS', 25, 'vikas@gmail.com');
+mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1001, 'NIKHIL', 25, 'nikhil@gmail.com');
 Query OK, 1 row affected (0.01 sec)
 
 mysql> select * from Employee;
 +-------------+---------------+------+-----------------+
 | Employee_Id | Employee_Name | Age  | Email           |
 +-------------+---------------+------+-----------------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com|
 +-------------+---------------+------+-----------------+
 1 row in set (0.00 sec)
 
-mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1002, 'VIKAS R', 26, 'vikas@gmail.com');
-ERROR 1062 (23000): Duplicate entry 'vikas@gmail.com' for key 'employee.Email'
-mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1002, 'VIKAS R', 26, 'vikasr@gmail.com');
+mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1002, 'NIKHIL R', 26, 'nikhil@gmail.com');
+ERROR 1062 (23000): Duplicate entry 'nikhil@gmail.com' for key 'employee.Email'
+mysql> insert into Employee(Employee_Id, Employee_Name, Age, Email) values(1002, 'NIKHIL R', 26, 'nikhilp@gmail.com');
 Query OK, 1 row affected (0.00 sec)
 
 mysql> select * from Employee;
 +-------------+---------------+------+------------------+
 | Employee_Id | Employee_Name | Age  | Email            |
 +-------------+---------------+------+------------------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com |
+|        1002 | NIKHIL P      |   26 | nikhilp@gmail.com|
 +-------------+---------------+------+------------------+
 2 rows in set (0.00 sec)
 
@@ -73,8 +73,8 @@ mysql> select * from Employee;
 +-------------+---------------+------+------------------+------+---------+
 | Employee_Id | Employee_Name | Age  | Email            | PAN  | AADHAAR |
 +-------------+---------------+------+------------------+------+---------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  | NULL |    NULL |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com | NULL |    NULL |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com | NULL |  NULL   |
+|        1002 | NIKHIL R      |   26 | nikhilp@gmail.com| NULL |  NULL   |
 +-------------+---------------+------+------------------+------+---------+
 2 rows in set (0.00 sec)
 
@@ -88,8 +88,8 @@ mysql> select * from Employee;
 +-------------+---------------+------+------------------+----------+---------+
 | Employee_Id | Employee_Name | Age  | Email            | PAN      | AADHAAR |
 +-------------+---------------+------+------------------+----------+---------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  | BXRT458N |    NULL |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com | NULL     |    NULL |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com | BXRT458N |    NULL |
+|        1002 | NIKHIL R      |   26 | nikhilp@gmail.com| NULL     |    NULL |
 +-------------+---------------+------+------------------+----------+---------+
 2 rows in set (0.00 sec)
 
@@ -101,8 +101,8 @@ mysql> select * from Employee;
 +-------------+---------------+------+------------------+----------+---------+
 | Employee_Id | Employee_Name | Age  | Email            | PAN      | AADHAAR |
 +-------------+---------------+------+------------------+----------+---------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  | BXRT458N |  123456 |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com | NULL     |    NULL |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com | BXRT458N |  123456 |
+|        1002 | NIKHIL R      |   26 | NIKHILr@gmail.com| NULL     |    NULL |
 +-------------+---------------+------+------------------+----------+---------+
 2 rows in set (0.00 sec)
 
@@ -120,8 +120,8 @@ mysql> select * from Employee;
 +-------------+---------------+------+------------------+----------+---------+
 | Employee_Id | Employee_Name | Age  | Email            | PAN      | AADHAAR |
 +-------------+---------------+------+------------------+----------+---------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  | BXRT458N |  123456 |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com | BXRT458M |  123457 |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com | BXRT458N |  123456 |
+|        1002 | NIKHIL R      |   26 | nikhilp@gmail.com| BXRT458M |  123457 |
 +-------------+---------------+------+------------------+----------+---------+
 2 rows in set (0.00 sec)
 
@@ -137,8 +137,8 @@ mysql> select * from Employee;
 +-------------+---------------+------+------------------+
 | Employee_Id | Employee_Name | Age  | Email            |
 +-------------+---------------+------+------------------+
-|        1001 | VIKAS         |   25 | vikas@gmail.com  |
-|        1002 | VIKAS R       |   26 | vikasr@gmail.com |
+|        1001 | NIKHIL        |   25 | nikhil@gmail.com |
+|        1002 | NIKHIL P      |   26 | nikhilp@gmail.com|
 +-------------+---------------+------+------------------+
 2 rows in set (0.00 sec)
 
