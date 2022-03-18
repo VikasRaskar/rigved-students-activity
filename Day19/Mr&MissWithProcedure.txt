@@ -1,0 +1,73 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use rigved_db
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_rigved_db |
++---------------------+
+| marks               |
+| person              |
+| student             |
+| user                |
+| user_history        |
++---------------------+
+5 rows in set (0.02 sec)
+
+mysql> select * from person;
++------+------+--------+
+| ID   | NAME | GENDER |
++------+------+--------+
+|   10 | Raj  | Male   |
+|   11 | Alia | Female |
++------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure genUpdate(IN Pid int)
+    -> begin
+    -> declare N_Name varchar(50);
+    -> declare G_Gender varchar(50);
+    -> select NAME into N_Name from person where ID = Pid;
+    -> select GENDER into G_Gender from person where ID = Pid;
+    -> if G_Gender = 'Male'
+    -> then select concat("Mr.",N_Name) from person where ID = Pid;
+    -> else select concat("Miss.",N_Name) from person where ID = Pid;
+    -> end if;
+    -> end//
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call genUpdate(10)//
++----------------------+
+| concat("Mr.",N_Name) |
++----------------------+
+| Mr.Raj               |
++----------------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call genUpdate(11)//
++------------------------+
+| concat("Miss.",N_Name) |
++------------------------+
+| Miss.Alia              |
++------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
+mysql> ^C
+mysql>
