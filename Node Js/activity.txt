@@ -1,0 +1,5 @@
+1.	Try out all the above activities
+2.	Take input from the keyboard and read data like id, name & salary from keyboard and store this in a JSON file
+3.	Same above example do it for multiple records i.e., you must able to store multiple JSON data in the JSON file, but each data should be separated by comma
+4.	Continue the above example, and read the JSON file having multiple data and convert to Javascript object and print all the information in the console
+Hint: Multiple data/json/javascript object is represented by array
