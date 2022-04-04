@@ -1,0 +1,25 @@
+<div class="container"><h2>Employee Table</h2>
+    <table>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Gender</th>
+                <th colspan="2">Address</th>            
+            </tr>
+            <tr>
+                <th>
+                    State
+                </th>
+                <th>
+                    City
+                </th>
+            </tr>
+    
+            <tr *ngFor='let employee of employees'>
+                <td>{{employee.name | customePipe:employee.gender}}</td>
+                <td>{{employee.gender | titlecase}}</td>
+                <td>{{employee.address.state}}</td>
+                <td>{{employee.address.city}}</td>
+            </tr>
+        
+    </table>
+</div>

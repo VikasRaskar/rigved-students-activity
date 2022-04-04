@@ -1,0 +1,18 @@
+
+table{
+height: 200px;
+width: 300px;
+text-align: center;
+margin-top: 20px;
+margin-left: 620px;
+}
+tr{
+    background-color: rgb(62, 192, 201);
+    color: darkblue;
+}
+
+h2{
+    margin: auto;
+    text-align: center;
+    color: midnightblue;
+}
