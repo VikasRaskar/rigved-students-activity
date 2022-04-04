@@ -1,72 +1,87 @@
-   
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
 const mysql = require('mysql2');
+const express = require('express');
+var app = express();
+const bodyparser = require('body-parser');
 
-app.use(bodyParser.json());
+app.use(bodyparser.json());
 
-app.listen(5000,() =>{
-    console.log('Server started on port 5000');
-});
-
-const conn = mysql.createConnection({
+var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'employeedb'
-  });
-
-conn.connect((err) =>{
-    if(err) throw err;
-    console.log('Mysql Connection successed.');
-  });
-     
-
-app.get('/employee',(req, res) => {
-let sqlQuery = "SELECT * FROM employee";
-
-let query = conn.query(sqlQuery, (err, results) => {
-    if(err) 
-    throw err;
-    res.send((results));
-});
+    database: 'employeedb',
+    multipleStatements: true
 });
 
-app.get('/employee/:id',(req, res) => {
-    let sqlQuery = "SELECT * FROM employee WHERE id=" + req.params.id;
-      
-    let query = conn.query(sqlQuery, (err, results) => {
-      if(err) throw err;
-      res.send((results));
-    });
+mysqlConnection.connect((err) => {
+    if (!err)
+        console.log('DB connection succeded.');
+    else
+        console.log('DB connection failed \n Error : ' + JSON.stringify(err, undefined, 2));
 });
 
-app.post('/employee',(req, res) => {
-    let data = {id: req.body.id,name: req.body.name, salary: req.body.salary};
-    
-    let sqlQuery = "INSERT INTO employee SET ?";
-    
-    let query = conn.query(sqlQuery, data,(err, results) => {
-      if(err) throw err;
-      res.send((results));
-    });
+
+app.listen(3000, () => console.log('Express server is runnig at port no : 3000'));
+
+
+//Get all employees
+app.get('/employees', (req, res) => {
+    mysqlConnection.query('SELECT * FROM employee', (err, rows, fields) => {
+        if (!err)
+            res.send(rows);
+        else
+            console.log(err);
+    })
 });
 
-app.put('/employee/:id',(req, res) => {
-    let sqlQuery = "UPDATE employee SET salary='"+req.body.salary+"', name='"+req.body.name+"' WHERE id="+req.params.id;
-    
-    let query = conn.query(sqlQuery, (err, results) => {
-      if(err) throw err;
-      res.send((results));
-    });
-  });
+//Get an employees
+app.get('/employees/:id', (req, res) => {
+    mysqlConnection.query('SELECT * FROM employee WHERE EmpId = ?', [req.params.id], (err, rows, fields) => {
+        if (!err)
+            res.send(rows);
+        else
+            console.log(err);
+    })
+});
 
-app.delete('/employee/:id',(req, res) => {
-    let sqlQuery = "DELETE FROM employee WHERE id="+req.params.id+"";
-      
-    let query = conn.query(sqlQuery, (err, results) => {
-      if(err) throw err;
-        res.send((results));
+//Delete an employees
+app.delete('/employees/:id', (req, res) => {
+    mysqlConnection.query('DELETE FROM employee WHERE EmpId = ?', [req.params.id], (err, rows, fields) => {
+        if (!err)
+            res.send('Deleted successfully.');
+        else
+            console.log(err);
+    })
+});
+
+//Insert an employees
+app.post('/employees', (req, res) => {
+    let emp = req.body;
+    var sql = "SET @EmpId = ?;SET @Name = ?;SET @EmpCode = ?;SET @Salary = ?; \
+    CALL EmployeeAddOrEdit(@EmpId,@Name,@EmpCode,@Salary);";
+    mysqlConnection.query(sql, [emp.EmpId, emp.Name, emp.EmpCode, emp.Salary], (err, rows, fields) => {
+        if (!err)
+            rows.forEach(element => {
+                if(element.constructor == Array)
+                res.send('Inserted employee id : '+element[0].EmpId);
+            });
+        else
+            console.log(err);
+    })
+});
+
+//Router to INSERT/POST a learner's detail
+app.post('/employees', (req, res) => {
+    let emp = req.body;
+    var sql = "SET @EmpId = ?;SET @Name = ?;SET @EmpCode = ?;SET @Salary = ?; \
+    CALL learnerAddOrEdit(@EmpId,@Name,@EmpCode,@Salary";
+    mysqlConnection.query(sql, [emp.EmpId, emp.Name, emp.EmpCode, emp.Salary], (err, rows, fields) => {
+    if (!err)
+    rows.forEach(element => {
+    if(element.constructor == Array)
+    res.send('New Employee Id : '+ element[0].EmpId);
     });
-  });
+    else
+    console.log(err);
+    })
+    });
