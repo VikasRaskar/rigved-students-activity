@@ -19,5 +19,5 @@ export class Activity1Component implements OnInit {
     { "rollNo": 5, "name": "Amit", "marks": 70 }, 
     { "rollNo": 6, "name": "Zaheer", "marks": 80 }
   ]
-  styleattach={}
+  
 }

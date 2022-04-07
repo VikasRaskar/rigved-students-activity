@@ -9,11 +9,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let x of students">
-                <td>{{x.rollNo}}</td>
-                <td>{{x.name}}</td>
-                <td *ngIf="x.marks>=40; else elseBlock"><p [style]="{'color':'green'}">{{x.marks}}</p></td>
-                <ng-template #elseBlock><p [style]="{'color':'red'}">{{x.marks}}</p></ng-template>                
+            <tr *ngFor="let std of students">
+                <td>{{std.rollNo}}</td>
+                <td>{{std.name}}</td>
+                <td *ngIf="std.marks>=40; else elseBlock"><p [style]="{'color':'green'}">{{std.marks}}</p></td>
+                <ng-template #elseBlock><p [style]="{'color':'red'}">{{std.marks}}</p></ng-template>                
             </tr>
         </tbody>
     </table>

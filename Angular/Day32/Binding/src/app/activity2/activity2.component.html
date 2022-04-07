@@ -8,12 +8,12 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let x of products">
+            <ng-container *ngFor="let prd of products">
                 <tr >
-                    <td [attr.rowspan]="x.brand.length">{{x.name}}</td>
-                    <td>{{x.brand[0]}}</td>
+                    <td [rowSpan]="prd.brand.length">{{prd.name}}</td>
+                    <td>{{prd.brand[0]}}</td>
                 </tr>
-                <ng-container *ngFor="let b of x.brand; let i=index;">
+                <ng-container *ngFor="let b of prd.brand; let i=index;">
                     <tr *ngIf="i!=0">
                         <td>{{b}}</td>
                     </tr>
