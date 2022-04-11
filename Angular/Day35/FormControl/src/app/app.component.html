@@ -1,0 +1,7 @@
+<div>
+FirstName:<input type="text" [formControl]="firstname" placeholder="Enter Your First Name"><br><br>
+LastName:<input type="text" [formControl]="lastname" placeholder=" Enter Your Last Name">
+</div><br>
+<div>{{firstname  | json}}</div><br>
+<div>{{lastname  | json}}</div>
+<div>{{firstname.value}} {{lastname.value}}</div>
