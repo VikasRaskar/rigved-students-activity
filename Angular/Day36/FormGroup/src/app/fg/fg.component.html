@@ -1,0 +1,15 @@
+<div class="container-fluid"> 
+<form (ngSubmit)="handleSubmit()">
+<div class="my-2">
+    UserName : <input type="text" [formControl]="username">
+    <span [hidden]="username.valid || username.pristine " class="text-danger">**UserName should be Enter**</span>
+</div>
+<div class="my-2">
+    Password : <input type="password" [formControl]="password">
+    <span [hidden]="password.valid || password.pristine " class="text-danger">**Password should be Enter**</span>
+</div>
+
+<div><input type="submit" value="submit" [disabled]="username.invalid || password.invalid"></div>
+<div>Username value : {{username.value}} <br> Password value : {{password.value}}</div>
+</form>
+</div>
