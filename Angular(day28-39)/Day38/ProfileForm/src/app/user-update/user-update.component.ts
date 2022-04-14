@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-update',
   templateUrl: './user-update.component.html',
@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
 })
 export class UserUpdateComponent implements OnInit {
   object:any | undefined=undefined
-  constructor(private fb : FormBuilder, private service : UserService) { }
+  constructor(private fb : FormBuilder, private service : UserService, private _router : Router) { }
 
   ngOnInit(): void {
   }
@@ -21,12 +21,12 @@ export class UserUpdateComponent implements OnInit {
     PrId:['',Validators.required],
     Name:['', Validators.required],
     Gender:['', Validators.required],
-    PhNo:['',Validators.compose([Validators.minLength(10),Validators.required,Validators.maxLength(10)])],
+    PhNo:['',Validators.required],
     Email:['', Validators.required],
     Address:this.fb.group({
       State:['', Validators.required],
       City:['', Validators.required],
-      Pin:['',Validators.compose([Validators.required,Validators.minLength(6),Validators.maxLength(6)])]
+      Pin:['',Validators.required]
     })
   })
 
@@ -42,8 +42,9 @@ export class UserUpdateComponent implements OnInit {
   }
   
   updateForm(){
-    console.log(this.InfoForm.value)
-    this.service.updateform(this.InfoForm.value)
+    this.service.updateform(this.InfoForm.value);
+    this._router.navigate(["userList"]);
+    
   }
 
   getInfo(){
