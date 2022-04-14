@@ -10,6 +10,7 @@
     <div class="form-group">
       <label for="exampleInputPassword1">Name:</label>
       <input type="text" class="form-control" formControlName="Name" placeholder="Enter Your Name">
+      <span class="text-danger" [hidden]="userForm.controls['Name'].valid || userForm.controls['Name'].pristine">**Name is required</span>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Gender:</label>
@@ -21,31 +22,40 @@
             <input class="form-check-input" type="radio" formControlName="Gender"  value="Female">
             <label class="form-check-label" for="inlineRadio2">Female</label>
           </div>
+          <span class="text-danger" [hidden]="userForm.controls['Gender'].valid || userForm.controls['Gender'].pristine">**Please Select Gender</span>
+
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Phone No.</label>
         <input type="number" class="form-control" formControlName="PhNo" placeholder="Enter Your Phone number">
+        <span class="text-danger" [hidden]="userForm.controls['PhNo'].valid || userForm.controls['PhNo'].pristine">**Please Enter User Phone Number</span>
+
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Email:</label>
         <input type="email" class="form-control" formControlName="Email" placeholder="Enter Your Email Id">
+        <span class="text-danger" [hidden]="userForm.controls['Email'].valid || userForm.controls['Email'].pristine">**Please Enter User Email Id</span>
+
       </div>
       <div class="text-center"><h3 class="text-center pt-3 text-secondary">Address</h3></div>
       <div formGroupName="Address">
       <div class="form-group">
         <label for="exampleInputPassword1">State</label>
         <input type="text" class="form-control" formControlName="State" placeholder="Enter Your State Name">
+        <span class="text-danger" [hidden]="userForm.controls['Address'].get('State')?.valid || userForm.controls['Address'].get('State')?.pristine">**State is required</span>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">City:</label>
         <input type="text" class="form-control" formControlName="City" placeholder="Enter Your City Name">
+        <span class="text-danger" [hidden]="userForm.controls['Address'].get('City')?.valid || userForm.controls['Address'].get('City')?.pristine">**City is required</span>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">PIN:</label>
         <input type="number" class="form-control" formControlName="Pin" placeholder="Enter Your Postal Index Number">
+        <span class="text-danger" [hidden]="userForm.controls['Address'].get('Pin')?.valid || userForm.controls['Address'].get('Pin')?.pristine">**PIN code is required</span>
       </div>
       <div class="text-center my-2">
-          <button type="submit" class="btn btn-primary" >Submit</button>
+          <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
       </div>
     </div>
   </form>

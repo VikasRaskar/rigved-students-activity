@@ -8,6 +8,15 @@ import { UserStoreComponent } from './user-store/user-store.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+let route : Routes = [
+  {path: "", component : UserListComponent},
+  {path: "store", component: UserStoreComponent},
+  {path: "userList", component: UserListComponent},
+  {path: "delete", component: UserDeleteComponent},
+  {path: "update", component: UserUpdateComponent}
+]
 
 @NgModule({
   declarations: [
@@ -21,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(route)
   ],
   providers: [],
   bootstrap: [AppComponent]
