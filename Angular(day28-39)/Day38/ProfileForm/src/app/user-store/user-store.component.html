@@ -1,0 +1,54 @@
+<div class="container pt-2">
+    <div class="row justify-content-sm-center pt-3">
+        <div class="col-sm-6 shadow round pb-3">
+            <h3 class="text-center pt-3 text-secondary">Personal Information</h3>
+<form class=" container my-3" [formGroup]="userForm" (ngSubmit)="saveForm()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Profile.Id</label>
+      <input type="number" class="form-control" formControlName="PrId"  aria-describedby="emailHelp" placeholder="Enter Profile.Id">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Name:</label>
+      <input type="text" class="form-control" formControlName="Name" placeholder="Enter Your Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Gender:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="Gender"  value="Male">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="Gender"  value="Female">
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Phone No.</label>
+        <input type="number" class="form-control" formControlName="PhNo" placeholder="Enter Your Phone number">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Email:</label>
+        <input type="email" class="form-control" formControlName="Email" placeholder="Enter Your Email Id">
+      </div>
+      <div class="text-center"><h3 class="text-center pt-3 text-secondary">Address</h3></div>
+      <div formGroupName="Address">
+      <div class="form-group">
+        <label for="exampleInputPassword1">State</label>
+        <input type="text" class="form-control" formControlName="State" placeholder="Enter Your State Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">City:</label>
+        <input type="text" class="form-control" formControlName="City" placeholder="Enter Your City Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">PIN:</label>
+        <input type="number" class="form-control" formControlName="Pin" placeholder="Enter Your Postal Index Number">
+      </div>
+      <div class="text-center my-2">
+          <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+</div>

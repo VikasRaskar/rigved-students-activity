@@ -1,0 +1,27 @@
+<span class="conatainer-fluid">
+    <table *ngIf="item" class="table table-strip">
+        <thead>
+            <tr>
+                <th rowspan="2">ProfileId</th>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Gender</th>
+                <th rowspan="2">Phone No.</th>
+                <th rowspan="2">Email</th>
+                <th calspan="3">Address</th>
+                <th>State</th>                
+                <th>City</th>                
+                <th>PIN</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of item">
+                <td>{{user.profileId}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.phNo}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</span>

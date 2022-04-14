@@ -1,0 +1,29 @@
+<table *ngIf="items" class=" container table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="2">PrId</th>
+        <th rowspan="2">Name</th>
+        <th rowspan="2">Gender</th>
+        <th rowspan="2">Phone.No</th>
+        <th rowspan="2">Email.Id</th>
+        <th colspan="3" class="text-center">Address</th>
+      </tr>
+      <tr>
+        <th>State</th>
+        <th>City</th>
+        <th>PIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of items">
+        <th >{{user.PrId}}</th>
+        <td>{{user.Name}}</td>
+        <td>{{user.Gender}}</td>
+        <td>{{user.PhNo}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.Address.State}}</td>
+        <td>{{user.Address.City}}</td>
+        <td>{{user.Address.Pin}}</td>
+      </tr>
+    </tbody>
+  </table>
