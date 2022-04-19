@@ -1,0 +1,37 @@
+<div class="container pt-2">
+    <div class="row justify-content-sm-center pt-3">
+        <div class="col-sm-8 shadow round pb-3">
+          <h3 class="text-center pt-3 text-secondary">User Information List</h3>
+  <table *ngIf="items" class=" container table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th rowspan="2" class="text-center">PrId</th>
+          <th rowspan="2" class="text-center">Name</th>
+          <th rowspan="2" class="text-center">Gender</th>
+          <th rowspan="2" class="text-center">Phone.No</th>
+          <th rowspan="2" class="text-center">Email.Id</th>
+          <th colspan="3" class="text-center">Address</th>
+        </tr>
+        <tr>
+          <th>State</th>
+          <th>City</th>
+          <th>PIN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of items">
+          <th >{{user.PrId}}</th>
+          <td>{{user.Name}}</td>
+          <td>{{user.Gender}}</td>
+          <td>{{user.PhNo}}</td>
+          <td>{{user.Email}}</td>
+          <td>{{user.Address.State}}</td>
+          <td>{{user.Address.City}}</td>
+          <td>{{user.Address.Pin}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  
