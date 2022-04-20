@@ -1,0 +1,12 @@
+<div>
+    <h3>Find Single User</h3>
+    <div>
+        Id: <input type="number" class="form-control" [formControl]="_id">
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Get" (click)="handleGet(_id.value)">
+
+    <div>
+        <p *ngIf="data">Get Id Data: {{data | json}}</p>
+    </div>
+</div>
